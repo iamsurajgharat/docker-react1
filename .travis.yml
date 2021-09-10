@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install:
+  - dcoker build -t surajgharat/docker-react1 -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true surajgharat/docker-react1 npm run test -- --coverage
